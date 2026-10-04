@@ -19,7 +19,7 @@ vb=ai['data/aurora_vfx_skin0.bin']; repl[vb],lg=recolor(ad[vb]); assert len(lg)=
 # 2) bunnysuit body: merged skn/skl, bunny texture, bunny animations
 repl[ai[A+'aurora_base.aurora.skn']]=open('merge/merged.skn','rb').read()
 repl[ai[A+'aurora_base.aurora.skl']]=open('merge/merged.skl','rb').read()
-repl[ai[A+'aurora_base_tx_cm.aurora.tex']]=bd[bi[B+'aurora_base_tx_cm.aurora.tex']]
+repl[ai[A+'aurora_base_tx_cm.aurora.tex']]=open('merge/baked_tex.tex','rb').read()   # Angelic outfit baked onto bunny UVs
 anims=0
 for nm,k in ai.items():
     if nm.startswith(A+'animations/'):
@@ -41,7 +41,7 @@ for (hh,o,cs,ds,t,dup,sub,ck) in toc:
 open('out/Aurora.wad.client','wb').write(d[:272]+bytes(newtoc)+bytes(body))
 _,e=read_wad('out/Aurora.wad.client'); dd={x['hash']:x['data'] for x in e}
 print('entries',len(e),'changed',sum(dd[k]!=ad[k] for k in ad),'verified',all(dd[k]==repl[k] for k in repl))
-info={"Author":"Frog / Abdomera (bunnysuit base)","Name":"reaper auror - Angelic Bunnysuit","Version":"3.0.0",
-      "Description":"Angelic edit on the Aurora Bunnysuit body (model, physics, animations by Abdomera): white wings, white/gold wand & VFX, heavenly cloud ult ring, no red ult VFX"}
-with zipfile.ZipFile('out/Reaper-Angelic-Bunnysuit-v3_0_0.fantome','w',zipfile.ZIP_DEFLATED) as zf:
+info={"Author":"Frog / Abdomera (bunnysuit base)","Name":"reaper auror - Angelic Bunnysuit","Version":"3.1.0",
+      "Description":"Angelic edit on the Aurora Bunnysuit body (model, physics, animations by Abdomera): white wings, white/gold wand & VFX, Angelic outfit (white hair/ears, ivory & gold) baked onto the bunnysuit, heavenly cloud ult ring, no red ult VFX"}
+with zipfile.ZipFile('out/Reaper-Angelic-Bunnysuit-v3_1_0.fantome','w',zipfile.ZIP_DEFLATED) as zf:
     zf.write('out/Aurora.wad.client','WAD/Aurora.wad.client'); zf.writestr('META/info.json',json.dumps(info,indent=2))

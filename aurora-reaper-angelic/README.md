@@ -1,6 +1,26 @@
 # Reaper Aurora – Angelic
 
-## v3.0.0 – Angelic on the Bunnysuit body (`Reaper-Angelic-Bunnysuit-v3_0_0.fantome`)
+## v3.1.0 – Angelic outfit on the Bunnysuit body (`Reaper-Angelic-Bunnysuit-v3_1_0.fantome`)
+
+The Angelic outfit texture is now **baked onto the bunnysuit's UVs**
+(`tools/merge/bake_outfit.py`):
+
+- The Angelic body is re-posed into the bunny bind pose through the shared skeleton
+  and sampled densely (~1.1M textured surface points).
+- Each bunny texel copies the colour of the nearest Angelic surface point that faces
+  the same way. Matches more than 3–8 units away fade out.
+- In the torso, shoulders and feet the two outfits are shaped differently, so those
+  areas (picked smoothly by skin weight, `zones_fallback.py`) keep the bunny's own
+  leotard/glove/shoe design, recoloured into the Angelic palette. Whites become
+  ivory, red/brown becomes gold, teal becomes ivory, and skin is unchanged.
+- The book (`Notepad`) texels are left untouched.
+
+Result: white hair and ears, the Angelic face, white gloves and stockings with gold
+garters and bands, an ivory leotard with gold piping, a gold bag and shoes.
+
+![outfit](preview/bunnysuit_angelic_outfit.png)
+
+### v3.0.0 – Angelic on the Bunnysuit body
 
 Uses Abdomera's **Aurora Bunnysuit** as the body: its mesh, skeleton (with breast and
 book physics bones) and all 55 re-baked animations. The Angelic pieces are layered
