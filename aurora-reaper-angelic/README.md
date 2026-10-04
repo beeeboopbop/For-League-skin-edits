@@ -1,6 +1,24 @@
-# Reaper Aurora – Angelic (v2.1.0)
+# Reaper Aurora – Angelic (v2.2.0)
 
 Based on `Reaper-Angelic-v2_0_0.fantome` (white/gold VFX, ivory outfit, white wings).
+
+## v2.2.0 – Better clouds, no more red on the ult
+
+**Clouds** (`tools/gen_clouds2.py`): rebuilt the ring with cauliflower-style cumulus
+lobes, real ray-traced ambient occlusion between puffs, a sun placed behind the ring
+(bright tops, shaded fronts) and a gold "silver lining" on the edges facing the
+camera. Triangles buried inside other puffs are culled (~64k tris). The DXT5 ramp
+texture is now `u = light`, `v = gold amount`.
+
+**Red ult VFX** (`tools/recolor.py`): the enemy/"RED" versions of the ult ring and
+recast effects (`Aurora_Base_R_AoERingStaticRED`, `..._R_AoERingRecastRED`,
+`..._R_AoERingRecastEnemy`, plus `Q_Vulnerable_Enemy`) had never been recoloured and
+showed red when the ult faded. Their 92 red colour values now use the same gold rule
+as the friendly versions: brightness `m` → `(m, 0.82m, 0.45m)`. Texture channel
+mixers (`erosionMapChannelMixer`, `palleteSrcMixColor`) are skipped on purpose.
+`data/aurora_vfx_skin0.bin` is the only bin that changed.
+
+![v2.1 vs v2.2](preview/ult_v21_vs_v22.png)
 
 ## v2.1.0 – Ult (R) heavenly cloud ring
 
