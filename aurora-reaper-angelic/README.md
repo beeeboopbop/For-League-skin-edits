@@ -1,6 +1,22 @@
-# Reaper Aurora – Angelic (v2.2.0)
+# Reaper Aurora – Angelic (v2.3.0)
 
 Based on `Reaper-Angelic-v2_0_0.fantome` (white/gold VFX, ivory outfit, white wings).
+
+## v2.3.0 – Slimmer, textured clouds
+
+**Smaller** (`tools/gen_clouds3.py`): clouds are ~60% of their previous size, so the
+ring is thinner (radius 465–704 vs 450–734) and lower (top ≈134 vs ≈230), on the same
+585-unit centre line as the ult edge. Rise animation unchanged.
+
+**Real texture**: the 256² light/gold ramp is replaced by a 2048² DXT1 atlas. Each
+puff is cube-mapped into its own tiles (867 tiles, padded so there are no seams), and
+every texel is baked from the 3D surface. Each texel gets a bump-mapped "micro-puff"
+cauliflower surface, soft creases, fbm wisps, ray-traced AO from neighbouring puffs,
+a backlit sun, a gold rim facing the camera and a gold glow at the base. About 50k
+triangles, 36k vertices.
+
+![v2.2 vs v2.3](preview/ult_v22_vs_v23.png)
+![close-up](preview/ult_v23_closeup.png)
 
 ## v2.2.0 – Better clouds, no more red on the ult
 
