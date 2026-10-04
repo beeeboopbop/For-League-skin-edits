@@ -1,4 +1,31 @@
-# Reaper Aurora – Angelic (v2.3.0)
+# Reaper Aurora – Angelic
+
+## v3.0.0 – Angelic on the Bunnysuit body (`Reaper-Angelic-Bunnysuit-v3_0_0.fantome`)
+
+Uses Abdomera's **Aurora Bunnysuit** as the body: its mesh, skeleton (with breast and
+book physics bones) and all 55 re-baked animations. The Angelic pieces are layered
+on top:
+
+- **White wings** (`wingsmat`) and the **white/gold wand** (`weapon`) are grafted from
+  the Angelic mesh. They're re-skinned from the Reaper bind pose onto the bunny bind
+  pose, and the 8 wing bones plus 2 wand-effect bones are appended to the bunny
+  skeleton (147 joints). The wing flap layer (`wings.anm`) and the feather/wand idle
+  particles keep working.
+- The bunny's own wand is dropped because it needs a base-game texture the mod doesn't
+  ship.
+- Animation-graph masks in all 100 skin bins are re-indexed by bone name for the new
+  skeleton. Bunny-only bones inherit their parent's mask weight.
+- Keeps everything from v2.3.0: all white/gold VFX, the heavenly cloud ult ring, and
+  no red ult VFX.
+- The outfit and hair use the bunnysuit texture as-is (red hair, bunny suit).
+
+Rebuild: `tools/merge/build_merge.py` → `tools/merge/package.py`.
+
+![merge](preview/bunnysuit_merge.png)
+
+`Reaper-Angelic-v2_3_0.fantome` is the same edit on the original Reaper body.
+
+# Changelog (Reaper body)
 
 Based on `Reaper-Angelic-v2_0_0.fantome` (white/gold VFX, ivory outfit, white wings).
 
